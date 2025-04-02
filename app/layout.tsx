@@ -1,15 +1,19 @@
 import type { Metadata } from 'next';
 import { Fira_Code, DM_Sans } from 'next/font/google';
-import './globals.css';
+import { Navbar } from './components';
+import './styles/globals.css';
+import { ThemeProvider } from './context/ThemeContext';
 
 const dmSans = DM_Sans({
-  variable: '--font-probando',
+  variable: '--font-dm-sans',
   subsets: ['latin', 'latin-ext'],
+  weight: ['100', '1000', '200', '300', '400'],
 });
 
 const firaCode = Fira_Code({
   variable: '--font-fira_code',
   subsets: ['latin', 'cyrillic', 'cyrillic-ext', 'greek', 'latin-ext'],
+  weight: ['300', '400', '500', '600', '700'],
 });
 
 export const metadata: Metadata = {
@@ -24,13 +28,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <style>
-        {`  :root {
-    --font-code: ${firaCode.style.fontFamily};
-    --font-dm_sans: ${dmSans.style.fontFamily};
-  }`}
-      </style>
-      <body>{children}</body>
+      <body
+        className={`${firaCode.variable} ${dmSans.variable} dark:bg-neutral-900 bg-neutral-100 flex flex-col items-center transition-colors duration-300 px-4`}
+      >
+        <ThemeProvider>
+          <Navbar />
+          <main>{children}</main>
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
