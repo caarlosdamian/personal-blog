@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
 import { Fira_Code, DM_Sans } from 'next/font/google';
-import { Navbar } from './components';
-import './styles/globals.css';
+import {  Navbar, Root } from './components';
 import { ThemeProvider } from './context/ThemeContext';
+import { MenuContextProvider } from './context/MenuContext';
+import './styles/globals.css';
 
 const dmSans = DM_Sans({
   variable: '--font-dm-sans',
@@ -29,12 +30,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${firaCode.variable} ${dmSans.variable} dark:bg-neutral-900 bg-neutral-100 flex flex-col items-center transition-colors duration-300 px-4`}
+        className={`${firaCode.variable} ${dmSans.variable} dark:bg-neutral-900 bg-neutral-100 flex flex-col items-center transition-colors duration-300 p-4`}
       >
-        <ThemeProvider>
-          <Navbar />
-          <main>{children}</main>
-        </ThemeProvider>
+        <main className="w-full relative">
+          <ThemeProvider>
+            <MenuContextProvider>
+              <Navbar />
+              <Root>{children}</Root>
+            </MenuContextProvider>
+          </ThemeProvider>
+        </main>
+        {/* </div> */}
       </body>
     </html>
   );

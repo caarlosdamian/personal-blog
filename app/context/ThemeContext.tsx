@@ -2,10 +2,11 @@
 
 import React, { createContext, useState, useEffect, useCallback } from 'react';
 
+type Mode = 'light' | 'dark';
 export interface ThemeContextType {
-  mode: 'light' | 'dark';
-  setMode: (mode: 'light' | 'dark') => void;
-  handleToogle: (mode?: string) => void;
+  mode: Mode;
+  setMode: (mode: Mode) => void;
+  handleToogle: (mode?: Mode) => void;
   isDarkMode: boolean;
 }
 
@@ -14,10 +15,10 @@ export const ThemeContext = createContext<ThemeContextType | undefined>(
 );
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [mode, setMode] = useState<'light' | 'dark'>('dark');
+  const [mode, setMode] = useState<Mode>('dark');
 
-  const handleToogle = (newMode?: string) => {
-    if (newMode === 'light' || mode === 'dark') {
+  const handleToogle = (newMode?: Mode) => {
+    if (newMode === 'light') {
       setMode('light');
       document.documentElement.removeAttribute('data-theme');
       return;
