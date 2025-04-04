@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { Fira_Code, DM_Sans } from 'next/font/google';
-import {  Navbar, Root } from './components';
+import { Navbar, Root } from './components';
 import { ThemeProvider } from './context/ThemeContext';
 import { MenuContextProvider } from './context/MenuContext';
 import './styles/globals.css';
@@ -32,7 +32,7 @@ export default function RootLayout({
       <body
         className={`${firaCode.variable} ${dmSans.variable} dark:bg-neutral-900 bg-neutral-100 flex flex-col items-center transition-colors duration-300 p-4`}
       >
-        <main className="w-full relative">
+        <main className="w-full relative flex items-center flex-col">
           <ThemeProvider>
             <MenuContextProvider>
               <Navbar />

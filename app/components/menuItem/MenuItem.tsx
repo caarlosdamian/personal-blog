@@ -11,16 +11,17 @@ interface Props {
     label: string;
   };
   lastItem: boolean;
+  isDesktop?: boolean;
 }
 
-export const MenuItem = ({ element, lastItem }: Props) => {
+export const MenuItem = ({ element, lastItem, isDesktop }: Props) => {
   const pathname = usePathname();
   const { toggleMenu } = use(MenuContext);
   return (
     <>
       <Link
         href={element.path}
-        className={`text-lg ${
+        className={`cursor-pointer ${isDesktop ? 'text-base' : 'text-lg'} ${
           pathname === element.path
             ? 'text-neutral-900 dark:text-neutral-0'
             : 'title'
@@ -29,8 +30,16 @@ export const MenuItem = ({ element, lastItem }: Props) => {
       >
         {element.label}
       </Link>
-      {!lastItem && (
-        <hr className="h-[1px] border-none bg-neutral-200 dark:bg-neutral-700" />
+      {!lastItem ||
+        (isDesktop && (
+          <hr className="h-[1px] border-none bg-neutral-200 dark:bg-neutral-700" />
+        ))}
+      {isDesktop && (
+        <hr
+          className={`h-[3px] border-none  ${
+            pathname === element.path ? 'bg-blue-700' : 'bg-transparent'
+          }`}
+        />
       )}
     </>
   );
