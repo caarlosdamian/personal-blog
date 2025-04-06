@@ -24,7 +24,7 @@ export const MenuItem = ({ element, lastItem, isDesktop }: Props) => {
         className={`cursor-pointer ${isDesktop ? 'text-base' : 'text-lg'} ${
           pathname === element.path
             ? 'text-neutral-900 dark:text-neutral-0'
-            : 'title'
+            : 'text-ligh-600_dark-400'
         }`}
         onClick={toggleMenu}
       >

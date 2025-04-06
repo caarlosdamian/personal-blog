@@ -40,7 +40,6 @@ export default function RootLayout({
             </MenuContextProvider>
           </ThemeProvider>
         </main>
-        {/* </div> */}
       </body>
     </html>
   );

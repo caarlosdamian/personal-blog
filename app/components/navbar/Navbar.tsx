@@ -13,16 +13,19 @@ export const Navbar = () => {
   ) as unknown as ThemeContextType;
   const { isOpen, toggleMenu } = use(MenuContext);
 
-  const closeMenuImg = isDarkMode
-    ? '/assets/images/icon-menu-close.svg'
-    : '/assets/images/icon-menu-close-light.svg';
-
-  const menuImg = isDarkMode
-    ? '/assets/images/icon-menu-light.svg'
-    : '/assets/images/icon-menu.svg';
-
   return (
-    <header className="container relative rounded-[10px] bg-neutral-0 p-[6px] dark:bg-neutral-800 border-responsive z-10 max-w-[640px]">
+    <header className="container rounded-[10px] bg-neutral-0 p-[6px] dark:bg-neutral-800 border-responsive z-10 max-w-[640px]">
+      <Image
+        src={
+          isDarkMode
+            ? '/assets/images/pattern-dark.svg'
+            : '/assets/images/pattern-light.svg'
+        }
+        width={423}
+        height={423}
+        alt="pattern"
+        className="absolute -left-[212px] top-[227px] hidden lg:block -z-10"
+      />
       <section aria-label="Main Navigation" className="flex justify-between">
         <div className="">
           <Image
@@ -56,15 +59,20 @@ export const Navbar = () => {
             }`}
           >
             <Image
-              src={isOpen ? closeMenuImg : menuImg}
+              src={
+                isOpen
+                  ? '/assets/images/icon-menu-close-light.svg'
+                  : '/assets/images/icon-menu.svg'
+              }
               width={20}
               height={20}
               alt="menu"
+              className="dark:invert"
             />
           </Button>
           <Button
-            variant="ghost"
-            className="p-3 rounded-[8px] bg-neutral-100 dark:bg-neutral-900 border-responsive"
+            variant="icon"
+            className="bg-neutral-100 dark:bg-neutral-900"
             onClick={() => handleToogle(isDarkMode ? 'light' : 'dark')}
           >
             <Image

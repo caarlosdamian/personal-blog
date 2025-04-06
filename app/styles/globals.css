@@ -38,12 +38,17 @@
   /* Red Colors */
   --color-red-400: #f04338;
   --color-red-600: #d92220;
+  --text-3-5xl: 2rem;
 }
 
-.title {
+.text-ligh-600_dark-400 {
   @apply text-neutral-600 dark:text-neutral-400;
 }
 
+.text-light-700_dark-0 {
+  @apply text-neutral-700 dark:text-neutral-0;
+}
+
 .border-responsive {
-  @apply border-[1px] border-neutral-200 dark:border-neutral-700
+  @apply border-[1px] border-neutral-200 dark:border-neutral-700;
 }
