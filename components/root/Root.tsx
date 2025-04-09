@@ -9,7 +9,7 @@ export const Root = ({ children }: PropsWithChildren) => {
   <div className="px-[4px] container relative -top-2 max-w-[640px]">
       <div
         className=" w-full border-responsive
-    px-3 pt-6"
+    px-3 pt-6 !border-b-transparent"
       >
         {isOpen && <Menu />}
         <div className={`${isOpen ? 'pt-8 md:pt-0' : ''}`}>{children}</div>

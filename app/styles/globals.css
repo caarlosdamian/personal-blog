@@ -49,6 +49,10 @@
   @apply text-neutral-700 dark:text-neutral-0;
 }
 
+.text-light-600_dark-400 {
+  @apply text-neutral-600 dark:text-neutral-400;
+}
+
 .border-responsive {
   @apply border-[1px] border-neutral-200 dark:border-neutral-700;
 }

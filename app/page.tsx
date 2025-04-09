@@ -1,9 +1,11 @@
 import Image from 'next/image';
 import { SectionWithList } from '../components/sectionWithList/SectionWithList';
 import { socialLinks } from '../constants';
-import { getTopInteractedTags } from '@/lib/actions/testing';
+import { getPosts } from '@/lib/actions/posts';
 
-export default function Home() {
+export default async function Home() {
+  const data = await getPosts({ pageSize: 5 });
+
   return (
     <main>
       <div className="flex flex-col gap-6 pb-8">
@@ -45,7 +47,7 @@ export default function Home() {
           ))}
         </div>
       </div>
-      <SectionWithList title="Articles" elements={[]} />
+      <SectionWithList title="Latest Articles" elements={data?.posts as []} />
     </main>
   );
 }
