@@ -1,10 +1,10 @@
 'use client';
-import { ThemeContext, ThemeContextType } from '@/app/context/ThemeContext';
+import { ThemeContext, ThemeContextType } from '@/context/ThemeContext';
 import { use } from 'react';
 import Image from 'next/image';
 import { Button } from '../button/Button';
-import { MenuContext } from '@/app/context/MenuContext';
-import { navLinks } from '@/app/constants';
+import { MenuContext } from '@/context/MenuContext';
+import { navLinks } from '@/constants';
 import { MenuItem } from '../menuItem/MenuItem';
 
 export const Navbar = () => {

@@ -1,6 +1,6 @@
 'use client';
 
-import { MenuContext } from '@/app/context/MenuContext';
+import { MenuContext } from '@/context/MenuContext';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { use } from 'react';

@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import { Fira_Code, DM_Sans } from 'next/font/google';
-import { Navbar, Root } from './components';
-import { ThemeProvider } from './context/ThemeContext';
-import { MenuContextProvider } from './context/MenuContext';
+import { Navbar, Root } from '../components';
+import { ThemeProvider } from '../context/ThemeContext';
+import { MenuContextProvider } from '../context/MenuContext';
 import './styles/globals.css';
 
 const dmSans = DM_Sans({

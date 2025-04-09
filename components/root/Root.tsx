@@ -1,7 +1,7 @@
 'use client';
 import React, { PropsWithChildren, use } from 'react';
 import { Menu } from '../menu/Menu';
-import { MenuContext } from '@/app/context/MenuContext';
+import { MenuContext } from '@/context/MenuContext';
 
 export const Root = ({ children }: PropsWithChildren) => {
   const { isOpen } = use(MenuContext);

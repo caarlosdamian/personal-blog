@@ -1,4 +1,4 @@
-import { navLinks } from '@/app/constants';
+import { navLinks } from '@/constants';
 import { MenuItem } from '../menuItem/MenuItem';
 
 export const Menu = () => {
