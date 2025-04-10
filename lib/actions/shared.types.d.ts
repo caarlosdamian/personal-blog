@@ -15,8 +15,11 @@ export interface UpdatePostParams {
   path: string;
 }
 
-export interface GetPostParams {
+export interface GetPostsParams {
   // sortBy?: string;
   page?: number;
   pageSize?: number;
+}
+export interface GetPostParams {
+  postId: number;
 }

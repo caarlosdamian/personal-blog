@@ -5,6 +5,7 @@ import {
   DeletePostParams,
   GetPostParams,
   UpdatePostParams,
+  GetPostsParams,
 } from './shared.types';
 import { revalidatePath } from 'next/cache';
 import { eq } from 'drizzle-orm';
@@ -51,12 +52,28 @@ export const updatedPost = async ({ path, post }: UpdatePostParams) => {
     throw error;
   }
 };
-export const getPosts = async (params: GetPostParams) => {
+
+export const getPost = async (params: GetPostParams) => {
+  const { postId } = params;
+  try {
+    const db = await connectToDatabase();
+    const post = await db
+      .select()
+      .from(postsTable)
+      .where(eq(postsTable.id, postId));
+
+    return post
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const getPosts = async (params: GetPostsParams) => {
   const { page = 1, pageSize = 10 } = params;
   try {
     const db = await connectToDatabase();
     const posts = await db.select().from(postsTable);
-    
+
     const totalPages = Math.ceil(posts.length / pageSize);
     const fromIndex = (page - 1) * pageSize;
     const filterPost = posts.slice(fromIndex, fromIndex + pageSize);
