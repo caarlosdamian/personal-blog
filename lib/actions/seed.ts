@@ -4,7 +4,7 @@ import { postsTable } from '@/db/schema';
 import { connectToDatabase } from '../mysql';
 import { blogs } from '@/constants';
 
-export async function getTopInteractedTags() {
+export async function seed() {
   try {
     const db = await connectToDatabase();
     // const { userId } = params;

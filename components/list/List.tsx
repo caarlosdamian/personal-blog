@@ -1,5 +1,7 @@
 'use client';
 
+// import { seed } from "@/lib/actions/seed";
+
 interface Props<T> {
   elements: T[];
   elementsWithDescription?: boolean;
@@ -18,7 +20,8 @@ export const List = <
 }: Props<T>) => {
   return (
     <ul aria-label="element-list" className="space-y-4">
-      {elements.map((element) => (
+      {/* <button onClick={()=>seed()}>clickeame</button> */}
+      {elements?.map((element) => (
         <li key={element.id} className="flex flex-col gap-2">
           <h3 className="text-light-700_dark-0 font-semibold text-xl leading-10 -tracking-[0.5px]">{element.title}</h3>
           <p className="text-sm text-light-600_dark-400" aria-label="Published date">

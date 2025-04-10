@@ -47,7 +47,12 @@ export default async function Home() {
           ))}
         </div>
       </div>
-      <SectionWithList title="Latest Articles" elements={data?.posts as []} />
+      <SectionWithList title="Latest Articles" elements={data?.posts as []}
+      link={{
+        label:'View all articles',
+        to:'/articles'
+      }}
+      />
     </main>
   );
 }

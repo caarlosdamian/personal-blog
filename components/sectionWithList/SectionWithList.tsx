@@ -1,3 +1,4 @@
+import { CustomLink } from '../customLink/CustomLink';
 import { List } from '../list/List';
 import { SectionTitle } from '../sectionTitle/SectionTitle';
 
@@ -6,12 +7,17 @@ interface Props<T> {
   title: string;
   description?: string;
   elementsWithDescription?: boolean;
+  link?:{
+    to:string,
+    label:string
+  }
 }
 
 export const SectionWithList = <T,>({
   elements,
   title,
   description,
+  link,
   elementsWithDescription = false,
 }: Props<T>) => {
   return (
@@ -19,6 +25,7 @@ export const SectionWithList = <T,>({
       <SectionTitle title={title} />
       {description && <h3>{description}</h3>}
       <List elements={elements as []} elementsWithDescription={elementsWithDescription} />
+      {link && <CustomLink label={link.label} to={link.to}/>}
     </section>
   );
 };
