@@ -17,16 +17,21 @@ export default async function Home() {
           <hr className="min-w-[230px] absolute bottom-1 border-none h-2 bg-blue-500" />
         </div>
         <article className="text-lg font-normal leading-6 text-ligh-600_dark-400 -tracking-[0.2px]">
-          I’m a senior front-end web developer with over 7 years of experience
-          building high-quality, responsive, and scalable web applications. I’m
-          passionate about crafting seamless user experiences, exploring new
-          technologies, and sharing my knowledge with the community. When I’m
-          not coding, you’ll find me refining my skills, staying up-to-date with
-          industry trends, or enjoying a good challenge—whether it’s
-          problem-solving in development or pushing my limits in outdoor
-          adventures. I started this blog to share insights from my experience,
-          document interesting challenges, and connect with fellow developers.
-          Welcome to my space, and thanks for stopping by! 🚀
+          <p>
+            I’m a senior front-end web developer with over 7 years of experience
+            building high-quality, responsive, and scalable web applications.
+            I’m passionate about crafting seamless user experiences, exploring
+            new technologies, and sharing my knowledge with the community.
+          </p>
+          <p>
+            When I’m not coding, you’ll find me refining my skills, staying
+            up-to-date with industry trends, or enjoying a good
+            challenge—whether it’s problem-solving in development or pushing my
+            limits in outdoor adventures. I started this blog to share insights
+            from my experience, document interesting challenges, and connect
+            with fellow developers. Welcome to my space, and thanks for stopping
+            by! 🚀
+          </p>
         </article>
         <div className="flex gap-3">
           {socialLinks.map((social) => (
@@ -47,11 +52,13 @@ export default async function Home() {
           ))}
         </div>
       </div>
-      <SectionWithList title="Latest Articles" elements={data?.posts as []}
-      link={{
-        label:'View all articles',
-        to:'/articles'
-      }}
+      <SectionWithList
+        title="Latest Articles"
+        elements={data?.posts as []}
+        link={{
+          label: 'View all articles',
+          to: '/articles',
+        }}
       />
     </main>
   );

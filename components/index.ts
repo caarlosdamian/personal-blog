@@ -3,3 +3,4 @@ export { Button } from './button/Button';
 export { Menu } from './menu/Menu';
 export { List } from './list/List';
 export { Root } from './root/Root';
+export { Footer } from './footer/Footer';
