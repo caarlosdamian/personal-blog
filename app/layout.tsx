@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { Fira_Code, DM_Sans } from 'next/font/google';
-import { Footer, Navbar, Root } from '../components';
+import {  Navbar, Root } from '../components';
 import { ThemeProvider } from '../context/ThemeContext';
 import { MenuContextProvider } from '../context/MenuContext';
 import './styles/globals.css';

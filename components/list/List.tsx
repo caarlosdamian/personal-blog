@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 
-// import { seed } from "@/lib/actions/seed";
+// import { seed } from '@/lib/actions/seed';
 
 interface Props<T> {
   elements: T[];
@@ -21,10 +21,13 @@ export const List = <
 }: Props<T>) => {
   return (
     <ul aria-label="element-list" className="space-y-4">
-      {/* <button onClick={()=>seed()}>clickeame</button> */}
+      {/* <button onClick={() => seed()}>clickeame</button> */}
       {elements?.map((element) => (
         <li key={element.id}>
-          <Link href={`/articles/${element.id}`} className='flex flex-col gap-2'>
+          <Link
+            href={`/articles/${element.id}`}
+            className="flex flex-col gap-2"
+          >
             <h3 className="text-light-700_dark-0 font-semibold text-xl leading-10 -tracking-[0.5px]">
               {element.title}
             </h3>
