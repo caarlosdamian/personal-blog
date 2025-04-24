@@ -1,8 +1,6 @@
 'use client';
 import Link from 'next/link';
 
-// import { seed } from '@/lib/actions/seed';
-
 interface Props<T> {
   elements: T[];
   elementsWithDescription?: boolean;
@@ -10,22 +8,26 @@ interface Props<T> {
 
 export const List = <
   T extends {
-    id: string | number;
+    _id: string | null | undefined;
     title: string;
     publishedAt: string;
     description?: string;
+    post: {
+      publishedAt: string;
+    };
   }
 >({
   elements,
   elementsWithDescription = true,
 }: Props<T>) => {
+
   return (
     <ul aria-label="element-list" className="space-y-4">
       {/* <button onClick={() => seed()}>clickeame</button> */}
       {elements?.map((element) => (
-        <li key={element.id}>
+        <li key={element._id}>
           <Link
-            href={`/articles/${element.id}`}
+            href={`/articles/${element._id}`}
             className="flex flex-col gap-2"
           >
             <h3 className="text-light-700_dark-0 font-semibold text-xl leading-10 -tracking-[0.5px]">
@@ -35,7 +37,7 @@ export const List = <
               className="text-sm text-light-600_dark-400"
               aria-label="Published date"
             >
-              {new Date(element.publishedAt).toLocaleDateString('en-US', {
+              {new Date(element.post.publishedAt).toLocaleDateString('en-US', {
                 year: 'numeric',
                 month: 'long',
                 day: 'numeric',

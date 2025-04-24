@@ -1,10 +1,12 @@
 import Image from 'next/image';
 import { SectionWithList } from '../components/sectionWithList/SectionWithList';
 import { socialLinks } from '../constants';
-import { getPosts } from '@/lib/actions/posts';
+import { getPostByLocale } from '@/lib/actions/posts';
+import { seedDatabase, testDatabaseConnection } from '@/lib/actions/seed';
 
 export default async function Home() {
-  const data = await getPosts({ pageSize: 5 });
+  const data = await getPostByLocale('en');
+  const posts = JSON.parse(data || '');
 
   return (
     <main>
@@ -54,7 +56,7 @@ export default async function Home() {
       </div>
       <SectionWithList
         title="Latest Articles"
-        elements={data?.posts as []}
+        elements={posts as []}
         link={{
           label: 'View all articles',
           to: '/articles',

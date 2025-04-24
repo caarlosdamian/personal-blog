@@ -52,3 +52,14 @@ export const getBlockquoteType = (children: ReactNode): { type: string } => {
 
   return filterElements[0];
 };
+
+export function slugify(str: string): string {
+  return str
+    .toLowerCase()
+    .normalize('NFD')                    // separa letras de tildes
+    .replace(/[\u0300-\u036f]/g, '')    // remueve tildes
+    .replace(/[^\w\s-]/g, '')           // remueve caracteres especiales
+    .trim()
+    .replace(/\s+/g, '-')               // reemplaza espacios por guiones
+    .replace(/-+/g, '-');               // evita guiones duplicados
+}

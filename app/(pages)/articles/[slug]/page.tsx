@@ -1,5 +1,4 @@
 import { Quote } from '@/components';
-import { getPost } from '@/lib/actions/posts';
 import { getBlockquoteType } from '@/lib/helpers';
 import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -7,7 +6,7 @@ import remarkGfm from 'remark-gfm';
 const BlogPage = async ({ params }: { params: { slug: string } }) => {
   const { slug } = await params;
 
-  const data = await getPost({ postId: slug as unknown as number });
+  // const data = await getPost({ postId: slug as unknown as number });
 
   return (
     <div className="text-light-600_dark-400 markdown">
@@ -26,7 +25,7 @@ const BlogPage = async ({ params }: { params: { slug: string } }) => {
           },
         }}
       >
-        {data && data[0]?.content}
+        {/* {data && data[0]?.content} */}
       </Markdown>
     </div>
   );
