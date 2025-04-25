@@ -14,6 +14,7 @@ export const List = <
     description?: string;
     post: {
       publishedAt: string;
+      slug: string;
     };
   }
 >({
@@ -21,13 +22,15 @@ export const List = <
   elementsWithDescription = true,
 }: Props<T>) => {
 
+  console.log(elements)
+
   return (
     <ul aria-label="element-list" className="space-y-4">
       {/* <button onClick={() => seed()}>clickeame</button> */}
       {elements?.map((element) => (
-        <li key={element._id}>
+        <li key={element.post.slug}>
           <Link
-            href={`/articles/${element._id}`}
+            href={`/articles/${element.post.slug}`}
             className="flex flex-col gap-2"
           >
             <h3 className="text-light-700_dark-0 font-semibold text-xl leading-10 -tracking-[0.5px]">

@@ -1,5 +1,5 @@
 import dbConnect from '../mongodb';
-import { PostTranslation } from '@/db';
+import { Post, PostTranslation } from '@/db';
 
 // export const createPost = async ({ path, post }: CreatePostParams) => {
 //   try {
@@ -94,6 +94,22 @@ export const getPostByLocale = async (locale: string) => {
     // posts.map((element)=>({...element.}))
 
     return JSON.stringify(posts);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getPostBySlug = async (slug: string, locale: string) => {
+  try {
+    await dbConnect();
+    const post = await Post.findOne({
+      slug,
+    }).populate({
+      path: 'translations',
+      match: { language: locale },
+    });
+
+    return post;
   } catch (error) {
     console.log(error);
   }

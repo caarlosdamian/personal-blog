@@ -1,13 +1,22 @@
 import { Quote } from '@/components';
+import { getPostBySlug } from '@/lib/actions/posts';
 import { getBlockquoteType } from '@/lib/helpers';
+import { PostI } from '@/types';
+import console from 'console';
+import { headers } from 'next/headers';
 import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
 const BlogPage = async ({ params }: { params: { slug: string } }) => {
   const { slug } = await params;
+  const headersList = await headers();
+  const locale = headersList.get('accept-language') as string;
+  const actualLocale =
+    locale.split(',')[0] === 'en' || locale.split(',')[0] === 'es'
+      ? locale.split(',')[0]
+      : 'es';
 
-  // const data = await getPost({ postId: slug as unknown as number });
-
+  const data = (await getPostBySlug(slug, actualLocale)) as PostI;
   return (
     <div className="text-light-600_dark-400 markdown">
       <Markdown
@@ -25,7 +34,7 @@ const BlogPage = async ({ params }: { params: { slug: string } }) => {
           },
         }}
       >
-        {/* {data && data[0]?.content} */}
+        {data && data.translations[0].content}
       </Markdown>
     </div>
   );
