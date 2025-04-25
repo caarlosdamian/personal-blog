@@ -1,12 +1,18 @@
 import Image from 'next/image';
 import { SectionWithList } from '../components/sectionWithList/SectionWithList';
 import { socialLinks } from '../constants';
-import { getPostByLocale } from '@/lib/actions/posts';
+import { getPostsByLocale } from '@/lib/actions/posts';
 import { seedDatabase, testDatabaseConnection } from '@/lib/actions/seed';
+import { headers } from 'next/headers';
+import { getActualLocale } from '@/lib/helpers';
 
 export default async function Home() {
-  const data = await getPostByLocale('en');
-  const posts = JSON.parse(data || '');
+  const headersList = await headers();
+
+  const locale = headersList.get('accept-language') as string;
+  const actualLocale = getActualLocale(locale);
+  const data = await getPostsByLocale({ locale: actualLocale, pageSize: 5 });
+  const posts = JSON.parse(data?.posts || '');
 
   return (
     <main>

@@ -19,6 +19,7 @@ export interface GetPostsParams {
   // sortBy?: string;
   page?: number;
   pageSize?: number;
+  locale: string;
 }
 export interface GetPostParams {
   postId: number;

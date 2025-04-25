@@ -56,10 +56,19 @@ export const getBlockquoteType = (children: ReactNode): { type: string } => {
 export function slugify(str: string): string {
   return str
     .toLowerCase()
-    .normalize('NFD')                    // separa letras de tildes
-    .replace(/[\u0300-\u036f]/g, '')    // remueve tildes
-    .replace(/[^\w\s-]/g, '')           // remueve caracteres especiales
+    .normalize('NFD') // separa letras de tildes
+    .replace(/[\u0300-\u036f]/g, '') // remueve tildes
+    .replace(/[^\w\s-]/g, '') // remueve caracteres especiales
     .trim()
-    .replace(/\s+/g, '-')               // reemplaza espacios por guiones
-    .replace(/-+/g, '-');               // evita guiones duplicados
+    .replace(/\s+/g, '-') // reemplaza espacios por guiones
+    .replace(/-+/g, '-'); // evita guiones duplicados
 }
+
+export const getActualLocale = (locale: string) => {
+  const actualLocale =
+    locale.split(',')[0] === 'en' || locale.split(',')[0] === 'es'
+      ? locale.split(',')[0]
+      : 'es';
+
+  return actualLocale;
+};

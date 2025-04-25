@@ -1,5 +1,7 @@
+import { PostI } from '@/types';
 import dbConnect from '../mongodb';
 import { Post, PostTranslation } from '@/db';
+import { GetPostsParams } from './shared.types';
 
 // export const createPost = async ({ path, post }: CreatePostParams) => {
 //   try {
@@ -78,28 +80,37 @@ import { Post, PostTranslation } from '@/db';
 //   }
 // };
 
-export const getPostByLocale = async (locale: string) => {
+export const getPostsByLocale = async (params: GetPostsParams) => {
   try {
+    const { page = 1, pageSize = 10, locale } = params;
+
     await dbConnect();
     const posts = await PostTranslation.find({
       language: locale,
     })
       .populate({
         path: 'post',
-        select: 'slug publishedAt -_id', // solo los campos necesarios
-        // options: { lean: true }, // más seguro para pasar al cliente
+        select: 'slug publishedAt -_id',
       })
       .lean();
 
-    // posts.map((element)=>({...element.}))
+    const totalPages = Math.ceil(posts.length / pageSize);
+    const fromIndex = (page - 1) * pageSize;
+    const filterPost = posts.slice(fromIndex, fromIndex + pageSize);
 
-    return JSON.stringify(posts);
+    return {
+      posts: JSON.stringify(filterPost),
+      totalPages,
+    };
   } catch (error) {
     console.log(error);
   }
 };
 
-export const getPostBySlug = async (slug: string, locale: string) => {
+export const getPostBySlug = async (
+  slug: string,
+  locale: string
+): Promise<PostI | undefined> => {
   try {
     await dbConnect();
     const post = await Post.findOne({
@@ -114,3 +125,21 @@ export const getPostBySlug = async (slug: string, locale: string) => {
     console.log(error);
   }
 };
+
+// export const getAllArtices = async (
+//   locale: string
+// ): Promise<PostI[] | undefined> => {
+//   try {
+//     await dbConnect();
+//     const post = await Post.findOne({
+//       slug,
+//     }).populate({
+//       path: 'translations',
+//       match: { language: locale },
+//     });
+
+//     return post;
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };

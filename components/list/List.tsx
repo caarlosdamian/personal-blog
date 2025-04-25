@@ -21,12 +21,8 @@ export const List = <
   elements,
   elementsWithDescription = true,
 }: Props<T>) => {
-
-  console.log(elements)
-
   return (
     <ul aria-label="element-list" className="space-y-4">
-      {/* <button onClick={() => seed()}>clickeame</button> */}
       {elements?.map((element) => (
         <li key={element.post.slug}>
           <Link
