@@ -2,9 +2,9 @@ import Image from 'next/image';
 import { SectionWithList } from '../components/sectionWithList/SectionWithList';
 import { socialLinks } from '../constants';
 import { getPostsByLocale } from '@/lib/actions/posts';
-import { seedDatabase, testDatabaseConnection } from '@/lib/actions/seed';
 import { headers } from 'next/headers';
 import { getActualLocale } from '@/lib/helpers';
+import { Title } from '@/components';
 
 export default async function Home() {
   const headersList = await headers();
@@ -17,13 +17,7 @@ export default async function Home() {
   return (
     <main>
       <div className="flex flex-col gap-6 pb-8">
-        <div className="flex flex-col relative">
-          <h1 className="z-10 relative text-light-700_dark-0 text-3-5xl font-bold leading-10 -tracking-[0.5px]">
-            Hi, I’m Carlos 👋
-          </h1>
-          {/* <button onClick={(}>Clikeando</button> */}
-          <hr className="min-w-[230px] absolute bottom-1 border-none h-2 bg-blue-500" />
-        </div>
+        <Title label="Hi, I’m Carlos 👋" />
         <article className="text-lg font-normal leading-6 text-ligh-600_dark-400 -tracking-[0.2px]">
           <p>
             I’m a senior front-end web developer with over 7 years of experience

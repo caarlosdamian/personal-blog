@@ -1,3 +1,4 @@
+export { Title } from './title/Title';
 export { Navbar } from './navbar/Navbar';
 export { Button } from './button/Button';
 export { Menu } from './menu/Menu';

@@ -13,7 +13,7 @@ const BlogPage = async () => {
 
   return (
     <div>
-      <SectionWithList title="Articles" elements={posts as []} />
+      <SectionWithList description='Below are all my recent blog posts. Click on any title to read the full article.' title="Articles" elements={posts as []} />
     </div>
   );
 };
