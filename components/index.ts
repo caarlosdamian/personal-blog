@@ -6,3 +6,5 @@ export { List } from './list/List';
 export { Root } from './root/Root';
 export { Footer } from './footer/Footer';
 export { Quote } from './quote/Quote';
+export { SocialLinks } from './socialLinks/SocialLinks';
+export { TextInput } from './textInput/TextInput';

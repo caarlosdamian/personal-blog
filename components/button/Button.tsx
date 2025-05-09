@@ -1,7 +1,7 @@
-import { HtmlHTMLAttributes, PropsWithChildren } from 'react';
+import { ButtonHTMLAttributes, PropsWithChildren } from 'react';
 
 interface Props
-  extends HtmlHTMLAttributes<HTMLButtonElement>,
+  extends ButtonHTMLAttributes<HTMLButtonElement>,
     PropsWithChildren {
   variant?: 'primary' | 'ghost' | 'icon';
 }

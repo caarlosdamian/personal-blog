@@ -1,10 +1,8 @@
-import Image from 'next/image';
 import { SectionWithList } from '../components/sectionWithList/SectionWithList';
-import { socialLinks } from '../constants';
 import { getPostsByLocale } from '@/lib/actions/posts';
 import { headers } from 'next/headers';
 import { getActualLocale } from '@/lib/helpers';
-import { Title } from '@/components';
+import { SocialLinks, Title } from '@/components';
 
 export default async function Home() {
   const headersList = await headers();
@@ -35,24 +33,7 @@ export default async function Home() {
             by! 🚀
           </p>
         </article>
-        <div className="flex gap-3">
-          {socialLinks.map((social) => (
-            <a
-              key={social.id}
-              href={social.url}
-              target="_blank"
-              className="bg-neutral-0 dark:bg-neutral-800 p-3 rounded-[8px] border-responsive"
-            >
-              <Image
-                className="dark:invert"
-                src={social.logo}
-                alt={social.id}
-                width="16"
-                height="16"
-              />
-            </a>
-          ))}
-        </div>
+        <SocialLinks />
       </div>
       <SectionWithList
         title="Latest Articles"

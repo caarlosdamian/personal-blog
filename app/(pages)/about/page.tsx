@@ -1,9 +1,9 @@
-import { Title } from '@/components';
+import { SocialLinks, Title } from '@/components';
 import Image from 'next/image';
 
 const About = () => {
   return (
-    <section className="flex flex-col gap-6">
+    <section className="flex flex-col gap-6 pb-6 md:pb-8 lg:pb-12">
       <Title label="About" />
       <div className="text-ligh-600_dark-400 flex flex-col gap-5">
         <p className="text-lg ">
@@ -56,9 +56,21 @@ const About = () => {
         </p>
 
         <div className="relative w-full h-[368px]">
-          <Image src="/assets/images/image-workspace-large.jpg" alt="desktop" fill objectFit='cover' className='rounded-2xl' />
+          <Image
+            src="/assets/images/image-workspace-large.jpg"
+            alt="desktop"
+            fill
+            objectFit="cover"
+            className="rounded-2xl"
+          />
         </div>
+        <p>
+          I hope this blog not only documents my growth but also helps others
+          see that coding can be for everyone. Thanks for joining me on this
+          journey!
+        </p>
       </div>
+      <SocialLinks withLabel />
     </section>
   );
 };
