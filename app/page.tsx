@@ -16,7 +16,7 @@ export default async function Home() {
     <main>
       <div className="flex flex-col gap-6 pb-8">
         <Title label="Hi, I’m Carlos 👋" />
-        <article className="text-lg font-normal leading-6 text-ligh-600_dark-400 -tracking-[0.2px]">
+        <article className="text-lg font-normal leading-6 text-ligh-600_dark-400 -tracking-[0.2px] flex flex-col gap-5">
           <p>
             I’m a senior front-end web developer with over 7 years of experience
             building high-quality, responsive, and scalable web applications.

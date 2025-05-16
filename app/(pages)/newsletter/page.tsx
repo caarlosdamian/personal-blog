@@ -1,12 +1,31 @@
 'use client';
 import { Button, TextInput, Title } from '@/components';
 import { useState } from 'react';
+import { SubmitHandler, useForm } from 'react-hook-form';
+
+type Inputs = {
+  email: string;
+};
 
 const Newsletter = () => {
-  const [email, setEmail] = useState('');
-  const [isSuccess, setIsSuccess] = useState();
+  const [isSuccess, setIsSuccess] = useState(false);
+
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm<Inputs>();
+
+  console.log(watch());
+  console.log('errors', errors);
+
+  const onSubmit: SubmitHandler<Inputs> = () => {
+    setIsSuccess(true);
+  };
+
   return (
-    <section className="text-ligh-600_dark-400">
+    <section className="text-ligh-600_dark-400 min-h-[841px]">
       <Title label="Newsletter" withOutBorder />
       <div className="flex flex-col gap-4">
         <p className="text-lg">
@@ -21,18 +40,28 @@ const Newsletter = () => {
           journey!
         </p>
       </div>
-      <form className="mt-6 flex flex-col gap-4">
+      <form
+        className="mt-6 flex flex-col gap-4 w-full"
+        onSubmit={handleSubmit(onSubmit)}
+      >
         <TextInput
           placeholder="email@example.com"
-          isSuccess={isSuccess}
+          errorMessage={errors['email']?.message}
           label="Email Address"
-          value={email}
-          onChange={(e) => {
-            setEmail(e.target.value);
+          register={register}
+          isSuccess={isSuccess}
+          successMessage="You’re subscribed! Check your inbox for updates."
+          name="email"
+          options={{
+            pattern: {
+              value: new RegExp('^[^@]+@[^@]+.[a-zA-Z]{2,}$'),
+              message: 'Please enter a valid email address.',
+            },
           }}
         />
         <Button className="max-w-fit">Stay updated</Button>
       </form>
+      <p className="text-lg mt-2">Unsubscribe anytime. No spam, I promise 🙂</p>
     </section>
   );
 };

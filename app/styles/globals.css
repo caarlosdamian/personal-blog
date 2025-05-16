@@ -58,6 +58,10 @@
   @apply border-[1px] border-neutral-200 dark:border-neutral-700;
 }
 
+.border-200_700 {
+  @apply border-[1px] border-neutral-200 dark:border-neutral-700;
+}
+
 .markdown h1 {
   @apply font-sans text-4xl font-extrabold leading-[130%] tracking-[-0.025em] mb-3;
 }

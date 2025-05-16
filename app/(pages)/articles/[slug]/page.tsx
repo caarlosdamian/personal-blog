@@ -13,6 +13,7 @@ const BlogPage = async ({ params }: { params: { slug: string } }) => {
   const actualLocale = getActualLocale(locale);
 
   const data = (await getPostBySlug(slug, actualLocale)) as PostI;
+  console.log(data)
   return (
     <div className="text-light-600_dark-400 markdown">
       <Markdown

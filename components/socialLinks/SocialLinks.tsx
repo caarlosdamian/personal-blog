@@ -16,7 +16,7 @@ export const SocialLinks = ({ withLabel }: Props) => {
             key={social.id}
             href={social.url}
             target="_blank"
-            className="bg-neutral-0 dark:bg-neutral-800 p-3 rounded-[8px] border-responsive"
+            className="bg-neutral-0 dark:bg-neutral-800 p-3 rounded-[8px] border-200_700  hover:bg-[#EFEDEB]"
           >
             <Image
               className="dark:invert"

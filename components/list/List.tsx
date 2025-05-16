@@ -33,7 +33,7 @@ export const List = <
               {element.title}
             </h3>
             <p
-              className="text-sm text-light-600_dark-400"
+              className="text-sm text-light-600_dark-400 italic"
               aria-label="Published date"
             >
               {new Date(element.post.publishedAt).toLocaleDateString('en-US', {
