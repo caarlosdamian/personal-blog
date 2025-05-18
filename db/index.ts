@@ -1,4 +1,4 @@
 import Post from './post.model';
 import PostTranslation from './postTranslation.model';
-
-export { PostTranslation, Post };
+import Email from './email.model';
+export { PostTranslation, Post, Email };

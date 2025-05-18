@@ -4,6 +4,10 @@ export interface CreatePostParams {
   post: typeof postsTable.$inferInsert;
   path: string;
 }
+export interface CreateEmailParams {
+  email: typeof postsTable.$inferInsert;
+  path: string;
+}
 
 export interface DeletePostParams {
   postId: number;

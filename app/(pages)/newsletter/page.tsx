@@ -1,6 +1,7 @@
 'use client';
 import { Button, TextInput, Title } from '@/components';
-import { useState } from 'react';
+import { postEmails } from '@/lib/actions/emails';
+import { usePathname } from 'next/navigation';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 type Inputs = {
@@ -8,20 +9,15 @@ type Inputs = {
 };
 
 const Newsletter = () => {
-  const [isSuccess, setIsSuccess] = useState(false);
-
   const {
     register,
     handleSubmit,
-    watch,
-    formState: { errors },
+    reset,
+    formState: { errors, isSubmitSuccessful },
   } = useForm<Inputs>();
-
-  console.log(watch());
-  console.log('errors', errors);
-
-  const onSubmit: SubmitHandler<Inputs> = () => {
-    setIsSuccess(true);
+  const pathname = usePathname();
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
+    postEmails({ email: data, path: pathname });
   };
 
   return (
@@ -43,13 +39,15 @@ const Newsletter = () => {
       <form
         className="mt-6 flex flex-col gap-4 w-full"
         onSubmit={handleSubmit(onSubmit)}
+        key={String(isSubmitSuccessful)}
       >
         <TextInput
           placeholder="email@example.com"
           errorMessage={errors['email']?.message}
           label="Email Address"
           register={register}
-          isSuccess={isSuccess}
+          reset={reset}
+          isSuccess={isSubmitSuccessful}
           successMessage="You’re subscribed! Check your inbox for updates."
           name="email"
           options={{

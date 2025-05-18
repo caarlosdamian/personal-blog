@@ -6,6 +6,7 @@ import {
   Path,
   RegisterOptions,
   UseFormRegister,
+  UseFormReset,
 } from 'react-hook-form';
 
 interface Props<T extends FieldValues>
@@ -16,6 +17,7 @@ interface Props<T extends FieldValues>
   options?: RegisterOptions<T>;
   isSuccess: boolean;
   successMessage: string;
+  reset: UseFormReset<T>;
 }
 
 export const TextInput = <T extends FieldValues>({
@@ -26,11 +28,15 @@ export const TextInput = <T extends FieldValues>({
   options,
   isSuccess,
   successMessage,
+  reset,
   ...props
 }: Props<T>) => {
   // const errorMessageAndNotUndefined = errorMessage
   // /assets/images/icon-error.svg
   // /assets/images/icon-success.svg
+  const { onChange, ...rest } = register(name as unknown as Path<T>, {
+    ...options,
+  });
 
   return (
     <label className="text-light-700_dark-0 flex flex-col gap-1.5 ">
@@ -44,8 +50,15 @@ export const TextInput = <T extends FieldValues>({
               ? 'border-red-600'
               : 'border-green-700'
           }`}
+          onChange={(event) => {
+            if (isSuccess) {
+              reset();
+            }
+            onChange(event);
+          }}
           {...props}
-          {...register(name as unknown as Path<T>, { ...options })}
+          {...rest}
+          // {...register(name as unknown as Path<T>, { ...options })}
         />
         {typeof errorMessage === 'undefined' && isSuccess === false ? null : (
           <div className="flex items-center gap-2">
