@@ -1,11 +1,13 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import mongoose from 'mongoose';
 declare global {
-  var mongoose: any; // This must be a `var` and not a `let / const`
+  let mongoose: unknown; // This must be a `var` and not a `let / const`
 }
-
+// @ts-ignore
 let cached = global.mongoose;
 
 if (!cached) {
+  // @ts-ignore
   cached = global.mongoose = { conn: null, promise: null };
 }
 

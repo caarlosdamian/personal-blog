@@ -1,3 +1,4 @@
+import { PageProps } from '@/.next/types/app/page';
 import { Quote } from '@/components';
 import { getPostBySlug } from '@/lib/actions/posts';
 import { getActualLocale, getBlockquoteType } from '@/lib/helpers';
@@ -6,14 +7,13 @@ import { headers } from 'next/headers';
 import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
-const BlogPage = async ({ params }: { params: { slug: string } }) => {
+const BlogPage = async ({ params }: PageProps) => {
   const { slug } = await params;
   const headersList = await headers();
   const locale = headersList.get('accept-language') as string;
   const actualLocale = getActualLocale(locale);
 
   const data = (await getPostBySlug(slug, actualLocale)) as PostI;
-  console.log(data)
   return (
     <div className="text-light-600_dark-400 markdown">
       <Markdown

@@ -7,19 +7,19 @@ const About = () => {
       <Title label="About" />
       <div className="text-ligh-600_dark-400 flex flex-col gap-5">
         <p className="text-lg ">
-          Hi, I’m <strong>Carlos Damián</strong>! Ever since I can remember,
-          I’ve been passionate about creativity, technology, and building things
-          that make a difference. That’s what drew me into the world of web
-          development. I love the process of turning ideas into real, functional
-          experiences that people can interact with—whether it's a sleek landing
-          page or a complex application.
+          Hi, I&apos;m <strong>Carlos Damián</strong>! Ever since I can
+          remember, I&apos;ve been passionate about creativity, technology, and
+          building things that make a difference. That&apos;s what drew me into
+          the world of web development. I love the process of turning ideas into
+          real, functional experiences that people can interact with—whether its
+          a sleek landing page or a complex application.
         </p>
 
         <p className="text-lg">
-          When I’m not coding, you’ll often find me exploring new hobbies or
-          diving into a good book. I enjoy everything from technology deep-dives
-          to inspiring life stories. Reading not only helps me relax but also
-          fuels my curiosity and creativity for new projects.
+          When I&apos;m not coding, you&apos;ll often find me exploring new
+          hobbies or diving into a good book. I enjoy everything from technology
+          deep-dives to inspiring life stories. Reading not only helps me relax
+          but also fuels my curiosity and creativity for new projects.
         </p>
 
         <p className="text-lg">
@@ -40,8 +40,8 @@ const About = () => {
             and adventure)
           </li>
           <li>
-            <em>“The Hobbit”</em> by J.R.R. Tolkien (because who doesn’t love a
-            good journey?)
+            <em>“The Hobbit”</em> by J.R.R. Tolkien (because who doesn&apos;t
+            love a good journey?)
           </li>
           <li>
             <em>“Educated”</em> by Tara Westover (a story of resilience and
@@ -51,8 +51,8 @@ const About = () => {
 
         <p>
           I also take pride in creating a workspace that keeps me inspired and
-          motivated every day. It's more than just a desk—it’s where ideas come
-          to life!
+          motivated every day. It&apos;s more than just a desk—it&apos;s where
+          ideas come to life!
         </p>
 
         <div className="relative w-full h-[368px]">
