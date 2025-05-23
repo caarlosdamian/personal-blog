@@ -1,7 +1,7 @@
 import { PostI } from '@/types';
 import dbConnect from '../mongodb';
 import { Post, PostTranslation } from '@/db';
-import { GetPostsParams } from './shared.types';
+import { GetAllPostParams, GetPostsParams } from './shared.types';
 
 // export const createPost = async ({ path, post }: CreatePostParams) => {
 //   try {
@@ -79,6 +79,34 @@ import { GetPostsParams } from './shared.types';
 //     console.error(error);
 //   }
 // };
+
+export const getAllPosts = async (
+  params: GetAllPostParams
+): Promise<
+  | {
+      posts: string;
+      totalPages: number;
+    }
+  | undefined
+> => {
+  try {
+    const { page = 1, pageSize = 10 } = params;
+
+    await dbConnect();
+    const posts = await Post.find();
+
+    const totalPages = Math.ceil(posts.length / pageSize);
+    const fromIndex = (page - 1) * pageSize;
+    const filterPost = posts.slice(fromIndex, fromIndex + pageSize);
+
+    return {
+      posts: JSON.stringify(filterPost),
+      totalPages,
+    };
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 export const getPostsByLocale = async (params: GetPostsParams) => {
   try {
